@@ -1,0 +1,36 @@
+[build-system]
+requires = ["hatchling>=1.26,<2"]
+build-backend = "hatchling.build"
+
+[project]
+name = "cfb-quant-engine"
+version = "0.1.0"
+description = "Chronological college football prediction and evaluation engine"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "numpy>=2.0,<3",
+    "pandas>=2.2,<4",
+    "pyarrow>=18,<27",
+    "requests>=2.32,<3",
+    "scipy>=1.14,<2",
+    "scikit-learn>=1.6,<2",
+    "xgboost>=3.0,<4",
+    "joblib>=1.4,<2",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8,<10",
+    "ruff>=0.12,<1",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["cfb_quant"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
